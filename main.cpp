@@ -1,0 +1,44 @@
+#include<iostream>
+#include<stdlib.h>
+#include<math.h>
+#include<fstream>
+#include<sstream>
+#include<bibli_fonctions.h>
+using namespace std;
+
+double e = 1.602e-19, m = 9.109e-31, wz = 9.5e17, b0 = 1.;
+/*double K = e * wz * wz / 2,M = e * b0 / m;*/
+double K = 6.e7*6.e7*2*M_PI*M_PI, M = 1e14;
+
+
+void systeme(double* q, double t, double* qp, int n) {
+  qp[0] = q[3];
+  qp[1] = q[4];
+  qp[2] = q[5];
+  qp[3] = K * q[0] - M * q[4];
+  qp[4] = K * q[1] + M * q[3];
+  qp[5] = - 2 * K * q[2];
+}
+
+
+int main() {
+  int i, n = 3, Nt = 20000; //n = dim = 3
+  double t = 0, tfin = 1.e-4, dt = (tfin - t) / (Nt - 1);
+  double* q  = (double*)malloc(2 * n * sizeof(double)); //coordonnées et vitesses canoniques
+  fstream fich("penning.res", ios::out);
+
+  //Conditions initiales
+  q[0] = 1.e-4; q[1] = 1.e-4; q[2] = 1.e-4; //position initiale
+  q[3] = 0; q[4] = 0; q[5] = 0; //vitesse initiale
+
+  //Résolution
+  for (i = 0; i < Nt; i++) {
+    fich << t << " " << q[0] << " " << q[1] << " " << q[2] << endl;
+    rk4(systeme, q, t, dt, 2*n);
+    t += dt;
+  }
+  fich.close();
+
+  free(q);
+  return 0;
+}
