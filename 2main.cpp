@@ -7,7 +7,7 @@
 using namespace std;
 
 double e = 1.602e-19, m = 9.109e-31, wz = 2*M_PI*60.e6, b0 = 1.;
-double wc = 2*M_PI*51.e9; //fréquence cyclotron légèrement modifiée par le champt électrique
+double wc = 2*M_PI*51.e9; //fréquence cyclotron légèrement modifiée par le champs électrique
 
 double K = wz*wz/2, M = wc;
 
