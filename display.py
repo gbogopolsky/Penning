@@ -15,7 +15,7 @@ mpl.rcParams['legend.fontsize'] = 10
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-l = np.loadtxt('penning.res')
+l = np.loadtxt('2penning.res')
 x = l[:,1]
 y = l[:,2]
 z = l[:,3]
