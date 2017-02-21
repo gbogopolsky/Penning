@@ -13,19 +13,24 @@ from mpl_toolkits.mplot3d import Axes3D
 
 #mpl.rcParams['legend.fontsize'] = 10
 
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-
 l = np.loadtxt('2penning.res')
+#x, y, z = [], [], []
+#for i in range(l.shape[0]/5):
+#    x.append(l[i,1])
+#    y.append(l[i,2])
+#    z.append(l[i,3])
 x = l[:,1]
 y = l[:,2]
 z = l[:,3]
+
+fig = plt.figure()
+ax = fig.gca(projection='3d')
 
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
-ax.plot(x, y, z, label='Trajectoire')
+ax.plot(x, y, z, label='Trajectoire de la particule')
 ax.legend()
 
 plt.show()
