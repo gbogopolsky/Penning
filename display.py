@@ -4,15 +4,14 @@
 #          http://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html            #
 #                                                                              #
 ################################################################################
-"""
-VERSION 1 : FIXE, FONCTIONNELLE
 
-import matplotlib as mpl
-from mpl_toolkits.mplot3d import Axes3D
+#VERSION 1 : FIXE, FONCTIONNELLE
+
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-mpl.rcParams['legend.fontsize'] = 10
+#mpl.rcParams['legend.fontsize'] = 10
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
@@ -22,14 +21,18 @@ x = l[:,1]
 y = l[:,2]
 z = l[:,3]
 
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+
 ax.plot(x, y, z, label='Trajectoire')
 ax.legend()
 
 plt.show()
-"""
+
 #-------------------------------------------------------------------------------------
 """
-VERSION 2 : ANIMATION, NON FONCTIONNELLE
+#VERSION 2 : ANIMATION, NON FONCTIONNELLE
 
 
 import numpy as np
@@ -88,9 +91,9 @@ ani = animation.FuncAnimation(fig, animate, init_func=init, frames = 500,
 #ani.save('penning_trap.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
 
 plt.show()
-"""
-#------------------------------------------------------------------------------------
 
+#------------------------------------------------------------------------------------
+#VERSION 3 : ANIMATION, NON FONCTIONNELLE
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -122,3 +125,5 @@ ax.set_zlabel('Z')
 
 ani = animation.FuncAnimation(fig, update, N, fargs=(data, line), interval=10000/N)
 plt.show()
+
+"""
