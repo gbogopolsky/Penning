@@ -29,7 +29,7 @@ int main() {
 
   //Conditions initiales
   q[0] = 0.1; q[1] = 0.1; q[2] = 0.1;  //position initiale
-  q[3] = 0; q[4] = 0; q[5] = 0;     //vitesse initiale
+  q[3] = 1.; q[4] = 1.; q[5] = 1.;     //vitesse initiale
 
   //Résolution
   for (i = 0; i < Nt; i++) {
