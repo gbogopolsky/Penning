@@ -12,7 +12,7 @@ double wc = 2*M_PI*51.e9; //fréquence cyclotron légèrement modifiée par le c
 double K = wz*wz/2, M = wc;
 
 
-void systeme(double* q, double t, double* qp, int n) {
+void systeme(double* q, double t, double* qp, int n) { //système d'équation de degré 1 à résoudre
   qp[0] = q[3];
   qp[1] = q[4];
   qp[2] = q[5];
@@ -22,14 +22,14 @@ void systeme(double* q, double t, double* qp, int n) {
 }
 
 int main() {
-  int i, n = 3, Nt = 200000; //n = dim = 3
+  int i, n = 3, Nt = 20000; //n = dim = 3
   double t = 0, tfin = 1.e-9, dt = (tfin - t) / (Nt - 1);
   double* q  = (double*)malloc(2 * n * sizeof(double)); //coordonnées et vitesses canoniques
   fstream fich("2penning.res", ios::out);
 
   //Conditions initiales
-  q[0] = 1e-4; q[1] = 1e-4; q[2] = 1e-4; //position initiale
-  q[3] = 2e4; q[4] = 2e4; q[5] = 2e4; //vitesse initiale
+  q[0] = 1e-4; q[1] = 1e-4; q[2] = 1e-4;  //position initiale
+  q[3] = 0; q[4] = 0; q[5] = 0;     //vitesse initiale
 
   //Résolution
   for (i = 0; i < Nt; i++) {
