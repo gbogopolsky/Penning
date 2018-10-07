@@ -1,7 +1,6 @@
-from scipy import *
-from matplotlib.pyplot import *
-from pylab import *
-from scipy.integrate import odeint
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.integrate as integrate
 
 # Des sites utiles
 # http://python-prepa.github.io/systemes_dynamiques.html
@@ -33,12 +32,11 @@ t = np.linspace(t0,tfin,steps)
 # Conditions initiales et resolution
 q0, q1, q2 = 0, 0, 1e-4
 q3, q4, q5 = 0, 0, 0
-sol = odeint(systeme, (q0,q1,q2,q3,q4,q5), t)
+sol = integrate.odeint(systeme, (q0,q1,q2,q3,q4,q5), t)
 
 q0,q1,q2,q3,q4,q5 = sol.T
 print(q2)
 print(q5)
 
 plt.plot(t,q5)
-
-show()
+plt.show()
