@@ -7,24 +7,31 @@ y = sol[:,2]
 z = sol[:,3]
 t = sol[:,0]
 
-fig = plt.figure() #Ouverture de la figure dans laquelle nous allons tracer
+fig = plt.figure() # Ouverture de la figure dans laquelle nous allons tracer
+limits = (np.min(t), np.max(t))
 
-#Premiere figure
+# Première figure
 plt.subplot(311)
-plt.plot(t, x)
-plt.title('Les coordonnees x, y et z en fonction de t.')
-plt.ylabel('x(t)')
+plt.plot(t, x, linewidth=1.2)
+plt.xlabel('t (s)')
+plt.title('Coordonnées x(t), y(t) et z(t) de la particule.')
+plt.ylabel('x (m)')
+plt.xlim(limits)
 
-#Deuxieme figure
+# Deuxième figure
 plt.subplot(312)
-plt.plot(t, y)
-plt.ylabel('y(t)')
+plt.plot(t, y, linewidth=1.2)
+plt.xlabel('t (s)')
+plt.ylabel('y (m)')
+plt.xlim(limits)
 
-#Troisieme figure
+# Troisième figure
 plt.subplot(313)
-plt.plot(t, z)
-plt.xlabel('Temps t')
-plt.ylabel('z(t)')
+plt.plot(t, z, linewidth=1.2)
+plt.xlabel('t (s)')
+plt.ylabel('z (m)')
+plt.xlim(limits)
 
-#Affichage de la figure ainsi tracee
+# Affichage de la figure ainsi tracée
+plt.tight_layout()
 plt.show()
